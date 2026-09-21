@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react'
-import { AnimatePresence, motion } from 'framer-motion'
+import { AnimatePresence, motion } from 'motion/react'
 import { Mail, MessageCircle } from 'lucide-react'
 import Eyebrow from '../ui/Eyebrow'
 import Chip from '../ui/Chip'

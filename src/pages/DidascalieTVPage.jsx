@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { motion, AnimatePresence, useReducedMotion } from 'framer-motion'
+import { motion, AnimatePresence, useReducedMotion } from 'motion/react'
 import { Play } from 'lucide-react'
 import BlurFade from '../components/magicui/blur-fade'
 import { fetchYouTubeVideos, formatVideoDate } from '../services/youtube'

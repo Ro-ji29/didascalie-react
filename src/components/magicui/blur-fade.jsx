@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { motion, useInView, useReducedMotion } from 'framer-motion'
+import { motion, useInView, useReducedMotion } from 'motion/react'
 import { cn } from '@/lib/utils'
 
 /**
@@ -14,11 +14,11 @@ export default function BlurFade({
   delay = 0,
   yOffset = 8,
   inView = false,
-  inViewMargin = '-50px',
-  blur = '6px',
+  inViewMargin = '-35px',
+  blur = '4px',
 }) {
   const ref = useRef(null)
-  const inViewResult = useInView(ref, { once: true, margin: inViewMargin })
+  const inViewResult = useInView(ref, { once: true, margin: inViewMargin, amount: 0.2 })
   const isInView = !inView || inViewResult
   const shouldReduceMotion = useReducedMotion()
   const [isMobile, setIsMobile] = useState(
@@ -67,6 +67,7 @@ export default function BlurFade({
         duration: shouldReduceMotion ? 0.15 : motionDuration,
         ease: [0.25, 0.1, 0.25, 1],
       }}
+      style={{ willChange: 'transform, opacity' }}
       className={cn(className)}
     >
       {children}

@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { motion, AnimatePresence, useReducedMotion } from 'framer-motion'
+import { motion, AnimatePresence, useReducedMotion } from 'motion/react'
 import { Search } from 'lucide-react'
 import Eyebrow from '../ui/Eyebrow'
 import Chip from '../ui/Chip'

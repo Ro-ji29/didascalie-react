@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { motion, AnimatePresence, useReducedMotion } from 'framer-motion'
+import { motion, AnimatePresence, useReducedMotion } from 'motion/react'
 import Eyebrow from '../ui/Eyebrow'
 import BlurFade from '../magicui/blur-fade'
 import { GALLERY_TABS, GALLERY_ITEMS } from '../../data/gallery'

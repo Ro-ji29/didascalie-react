@@ -1,4 +1,4 @@
-import { motion, useReducedMotion } from 'framer-motion'
+import { motion, useReducedMotion } from 'motion/react'
 import Eyebrow from '../ui/Eyebrow'
 import BlurFade from '../magicui/blur-fade'
 
@@ -72,7 +72,10 @@ export default function Hero() {
                 <div className="k">{item.k}</div>
                 <h3>{item.title}</h3>
                 <a className="go" href={item.href}>
-                  {item.label} <span className="arrow" aria-hidden="true">→</span>
+                  {item.label}{' '}
+                  <span className="arrow" aria-hidden="true">
+                    →
+                  </span>
                 </a>
               </BlurFade>
             </div>

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { motion, AnimatePresence, useScroll, useReducedMotion } from 'framer-motion'
+import { motion, AnimatePresence, useScroll, useReducedMotion } from 'motion/react'
 import { NAV_LINKS } from '../../data/navigation'
 
 /**
