@@ -1,4 +1,5 @@
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion'
+import { Headphones } from 'lucide-react'
 import Eyebrow from '../ui/Eyebrow'
 import Chip from '../ui/Chip'
 import Pill from '../ui/Pill'
@@ -58,7 +59,10 @@ export default function PrayerLibrary() {
                   </div>
                   <div className="actions">
                     <Pill>PDF</Pill>
-                    <Pill solid>Audio ▶</Pill>
+                    <Pill solid>
+                      <Headphones size={15} strokeWidth={2} aria-hidden="true" />
+                      <span>Audio</span>
+                    </Pill>
                   </div>
                 </div>
               ))}
