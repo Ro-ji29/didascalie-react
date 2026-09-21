@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { Play } from 'lucide-react'
 import Eyebrow from '../ui/Eyebrow'
 import BlurFade from '../magicui/blur-fade'
 import { fetchYouTubeVideos, formatVideoDate } from '../../services/youtube'
@@ -33,10 +34,16 @@ export default function DidascalieTV() {
         <div className="tv-preview-grid">
           {videos.map((video, idx) => (
             <BlurFade key={video.id} inView delay={0.22 + idx * 0.08} yOffset={10}>
-              <Link to={`/didascalie-tv/${video.id}`} className="tv-preview-card">
+              <Link
+                to={`/didascalie-tv/${video.id}`}
+                className="tv-preview-card"
+                aria-label={`Regarder la vidéo : ${video.title}`}
+              >
                 <div className="tv-preview-thumb-wrap">
                   <img className="tv-preview-thumb" src={video.thumbnail} alt={video.title} />
-                  <span className="tv-preview-play">▶</span>
+                  <span className="tv-preview-play" aria-hidden="true">
+                    <Play size={32} strokeWidth={2.2} fill="currentColor" />
+                  </span>
                 </div>
                 <div className="tv-preview-body">
                   <h3>{video.title}</h3>

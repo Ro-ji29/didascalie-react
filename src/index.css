@@ -885,7 +885,6 @@ h2.title {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 2rem;
   color: var(--ivory);
   text-shadow: 0 3px 12px rgba(0, 0, 0, 0.4);
 }

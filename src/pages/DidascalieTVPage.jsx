@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion'
+import { Play } from 'lucide-react'
 import BlurFade from '../components/magicui/blur-fade'
 import { fetchYouTubeVideos, formatVideoDate } from '../services/youtube'
 
@@ -97,9 +98,15 @@ export default function DidascalieTVPage() {
                   transition={{ duration: 0.22, delay: index * 0.04 }}
                   className="tv-card"
                 >
-                  <Link to={`/didascalie-tv/${video.id}`} className="tv-thumbnail-wrap">
+                  <Link
+                    to={`/didascalie-tv/${video.id}`}
+                    className="tv-thumbnail-wrap"
+                    aria-label={`Regarder la vidéo : ${video.title}`}
+                  >
                     <img src={video.thumbnail} alt={video.title} className="tv-thumbnail" />
-                    <span className="tv-play-badge">▶</span>
+                    <span className="tv-play-badge" aria-hidden="true">
+                      <Play size={22} strokeWidth={2.2} fill="currentColor" />
+                    </span>
                   </Link>
                   <div className="tv-card-body">
                     <Link to={`/didascalie-tv/${video.id}`} className="tv-card-title">
