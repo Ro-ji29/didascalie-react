@@ -2227,6 +2227,42 @@ footer {
   clip: rect(0 0 0 0);
 }
 
+/* Mobile-only framing for section photography. Desktop rules stay unchanged. */
+@media (max-width: 600px) {
+  .hero {
+    min-height: 660px;
+    background-position: 72% 18%;
+  }
+
+  #tv {
+    background-position: 68% 18%;
+  }
+
+  .prayer-library {
+    background-position: 62% bottom;
+  }
+
+  #galerie {
+    background-position: 50% 34%;
+  }
+
+  #enseignements {
+    background-position: 58% 22%;
+  }
+
+  #boutique {
+    background-position: 52% 42%;
+  }
+
+  #contact {
+    background-position: 50% 36%;
+  }
+
+  .donate-section {
+    background-position: 50% 22%;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   ::before,
