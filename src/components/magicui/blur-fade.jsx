@@ -46,6 +46,7 @@ export default function BlurFade({
   const motionDuration = isMobile ? mobileTiming.duration : duration
   const motionBlur = isMobile ? '0px' : blur
   const motionEase = isMobile ? [0.22, 1, 0.36, 1] : [0.25, 0.1, 0.25, 1]
+  const useMobileScrollReveal = isMobile && inView
 
   const defaultVariants = {
     hidden: {
@@ -66,7 +67,11 @@ export default function BlurFade({
     <motion.div
       ref={ref}
       initial="hidden"
-      animate={isInView ? 'visible' : 'hidden'}
+      animate={useMobileScrollReveal ? undefined : isInView ? 'visible' : 'hidden'}
+      whileInView={useMobileScrollReveal ? 'visible' : undefined}
+      viewport={
+        useMobileScrollReveal ? { once: true, amount: 0.12, margin: '0px 0px 10% 0px' } : undefined
+      }
       exit="hidden"
       variants={combinedVariants}
       transition={{
