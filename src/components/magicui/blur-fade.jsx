@@ -36,8 +36,14 @@ export default function BlurFade({
   }, [])
 
   const motionY = isMobile ? Math.min(yOffset, 5) : yOffset
-  const motionDelay = isMobile ? Math.min(delay * 0.55, 0.18) : delay
-  const motionDuration = isMobile ? Math.min(duration, 0.34) : duration
+  const mobileTiming =
+    yOffset >= 9
+      ? { delayScale: 0.72, duration: Math.max(duration, 0.64) }
+      : yOffset >= 7
+        ? { delayScale: 0.7, duration: Math.max(duration, 0.58) }
+        : { delayScale: 0.65, duration: Math.max(duration, 0.52) }
+  const motionDelay = isMobile ? Math.min(delay * mobileTiming.delayScale, 0.34) : delay
+  const motionDuration = isMobile ? mobileTiming.duration : duration
   const motionBlur = isMobile ? '0px' : blur
 
   const defaultVariants = {
