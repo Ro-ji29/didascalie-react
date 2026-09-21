@@ -38,13 +38,14 @@ export default function BlurFade({
   const motionY = isMobile ? Math.min(yOffset, 5) : yOffset
   const mobileTiming =
     yOffset >= 9
-      ? { delayScale: 0.72, duration: Math.max(duration, 0.64) }
+      ? { delayScale: 0.72, duration: Math.max(duration, 0.72) }
       : yOffset >= 7
-        ? { delayScale: 0.7, duration: Math.max(duration, 0.58) }
-        : { delayScale: 0.65, duration: Math.max(duration, 0.52) }
+        ? { delayScale: 0.7, duration: Math.max(duration, 0.66) }
+        : { delayScale: 0.65, duration: Math.max(duration, 0.58) }
   const motionDelay = isMobile ? Math.min(delay * mobileTiming.delayScale, 0.34) : delay
   const motionDuration = isMobile ? mobileTiming.duration : duration
   const motionBlur = isMobile ? '0px' : blur
+  const motionEase = isMobile ? [0.22, 1, 0.36, 1] : [0.25, 0.1, 0.25, 1]
 
   const defaultVariants = {
     hidden: {
@@ -71,7 +72,7 @@ export default function BlurFade({
       transition={{
         delay: shouldReduceMotion ? 0 : 0.04 + motionDelay,
         duration: shouldReduceMotion ? 0.15 : motionDuration,
-        ease: [0.25, 0.1, 0.25, 1],
+        ease: motionEase,
       }}
       style={{ willChange: 'transform, opacity' }}
       className={cn(className)}
