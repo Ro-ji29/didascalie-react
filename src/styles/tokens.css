@@ -1,0 +1,30 @@
+/* Design tokens — CSS custom properties shared across all components */
+:root {
+  --ink: #16213a;
+  --ink-2: #0f1729;
+  --gold: #c89b3c;
+  --gold-soft: #dfc183;
+  --clay: #a6472a;
+  --ivory: #f5efe1;
+  --ivory-2: #ede4cf;
+  --sage: #5b6b45;
+  --text-dark: #201a14;
+  --text-light: #f5efe1;
+  --bg: var(--ivory);
+  --fg: var(--text-dark);
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --bg: #0f1729;
+    --fg: #f5efe1;
+  }
+}
+
+:root[data-theme='dark'] {
+  --bg: #0f1729;
+  --fg: #f5efe1;
+}
