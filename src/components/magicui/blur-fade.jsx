@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { motion, useInView, useReducedMotion } from 'framer-motion'
 import { cn } from '@/lib/utils'
 
@@ -21,12 +21,30 @@ export default function BlurFade({
   const inViewResult = useInView(ref, { once: true, margin: inViewMargin })
   const isInView = !inView || inViewResult
   const shouldReduceMotion = useReducedMotion()
+  const [isMobile, setIsMobile] = useState(
+    () => typeof window !== 'undefined' && window.matchMedia('(max-width: 600px)').matches
+  )
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(max-width: 600px)')
+    const handleChange = (event) => setIsMobile(event.matches)
+
+    setIsMobile(mediaQuery.matches)
+    mediaQuery.addEventListener('change', handleChange)
+
+    return () => mediaQuery.removeEventListener('change', handleChange)
+  }, [])
+
+  const motionY = isMobile ? Math.min(yOffset, 5) : yOffset
+  const motionDelay = isMobile ? Math.min(delay * 0.55, 0.18) : delay
+  const motionDuration = isMobile ? Math.min(duration, 0.34) : duration
+  const motionBlur = isMobile ? '0px' : blur
 
   const defaultVariants = {
     hidden: {
-      y: shouldReduceMotion ? 0 : yOffset,
+      y: shouldReduceMotion ? 0 : motionY,
       opacity: 0,
-      filter: shouldReduceMotion ? 'none' : `blur(${blur})`,
+      filter: shouldReduceMotion ? 'none' : `blur(${motionBlur})`,
     },
     visible: {
       y: 0,
@@ -45,8 +63,8 @@ export default function BlurFade({
       exit="hidden"
       variants={combinedVariants}
       transition={{
-        delay: shouldReduceMotion ? 0 : 0.04 + delay,
-        duration: shouldReduceMotion ? 0.15 : duration,
+        delay: shouldReduceMotion ? 0 : 0.04 + motionDelay,
+        duration: shouldReduceMotion ? 0.15 : motionDuration,
         ease: [0.25, 0.1, 0.25, 1],
       }}
       className={cn(className)}
